@@ -1,30 +1,25 @@
-import java.util.*;
+package com.eastern.EmailSender;
 public class OTP {
-    String password;
-    String email;
-    public OTP(String userEmail)
+    private static String pass;
+    public static boolean checkPass(String input)
     {
-        email=userEmail;
-    }
-    public boolean checkPass(String input)
-    {
-        if(password.equals(input))
+        if(pass.equals(input))
         {
             return true;
         }
         else
         {
-            System.out.println("Would you like to resend code?");
             return false;
         }
     }
-    public String createOTP()
+    public static String createOTP()
     {
         String oneTimeCode="";
         for(int i=0;i<6;i++)
         {
            oneTimeCode+= Integer.toString((int)(Math.random()*10));
         }
+        pass=oneTimeCode;
         return oneTimeCode;
     }
 }
